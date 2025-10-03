@@ -1,5 +1,6 @@
 # ¿Cómo comenzamos un script en bash?
 
+#!/bin/bash
 
 # main.sh
 # Lunes 29 de septiembre de 2025
@@ -9,9 +10,13 @@
 
 # Para trabajar ordenados, acá podemos definir variables que luego vamos a usar
 # VARIABLES:
+IMG_DIR="../codigo/dataset"
+RESULTADO="resultado"
 
 
 #Creamos un directorio para guardar los resultados:
+mkdir -p "$RESULTADO"
+
 
 # 1) Analizar imagenes y guardar resumen
 # El programa toma una carpeta con imagenes y da como salida un resumen de parámetros importantes a un csv.
@@ -22,6 +27,8 @@
 # Entonces:
 # Queremos ejecutar el script analyze_images.py en la carpeta donde están las imagenes
 # Luego enviar la salida a un archivo csv en la carpeta resultado
+
+python3 scripts/analyze_images.py "$IMG_DIR" > "$RESULTADO/resumen.csv"
 
 # 2) Crear trayectoria circular 
 #
@@ -57,7 +64,9 @@
 # Vamos a generar un video con ffmpeg (instalar)
 # Lo creamos en la carpeta resultado utilizando las imagenes de la carpeta temporal
 # Lo creamos a 15fps o menos para que no sea tan corto
-ffmpeg -y -framerate 15 -i "????????" -c:v libx264 -pix_fmt yuv420p "?????"
+#
+#
+##ffmpeg -y -framerate 15 -i "????????" -c:v libx264 -pix_fmt yuv420p "?????"
 
 # 5) Generar reporte
 #
